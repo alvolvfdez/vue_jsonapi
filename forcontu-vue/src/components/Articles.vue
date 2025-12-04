@@ -22,7 +22,7 @@ export default {
   },
   created () {
     axios
-      .get(siteDomain + 'articulos/rest', restConfig)
+      .get(siteDomain + 'jsonapi/node/article', restConfig)
       .then(response => (this.articles = response.data))
   },
   components: {
