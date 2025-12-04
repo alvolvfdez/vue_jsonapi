@@ -16,7 +16,7 @@ export const restConfig = {
     'X-CSRF-Token': 'Nzemkyhz2hJaKOHsg1JpZQTJDRWFTXFleQJWWbXA32s',
     'Accept': 'application/vnd.api+json',
     'Authorization': 'Basic ' + btoa('usuariodemo:usuariodemo')
-  },
+  }
 }
 export const siteDomain = 'http://fe3.alvaolve.training.forcontu.com/'
 
