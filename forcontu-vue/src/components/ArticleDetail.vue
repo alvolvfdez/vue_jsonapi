@@ -42,7 +42,7 @@ export default {
   created () {
     this.loading = true
     axios
-      .get(siteDomain + 'json/node/article/' + this.$route.params.id, restConfig)
+      .get(siteDomain + '/json/node/article/' + this.$route.params.id, jsonApiConfig)
       .then(response => {
         this.article = response.data[0]
         this.loading = false

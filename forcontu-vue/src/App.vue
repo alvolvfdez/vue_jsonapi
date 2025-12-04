@@ -10,7 +10,7 @@
 </template>
 
 <script>
-export const restConfig = {
+export const jsonApiConfig = {
   headers: {
     'Content-Type': 'application/json',
     'X-CSRF-Token': 'Nzemkyhz2hJaKOHsg1JpZQTJDRWFTXFleQJWWbXA32s',

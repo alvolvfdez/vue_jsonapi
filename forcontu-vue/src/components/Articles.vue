@@ -2,7 +2,7 @@
   <div class="articles">
     <b-card-group columns id="list">
       <article-card v-for="article in articles"
-                    v-bind:key="article.id"
+                    v-bind:key="article.uuid"
                     v-bind:article="article"
       ></article-card>
     </b-card-group>
@@ -10,7 +10,7 @@
 </template>
 <script>
 import ArticleCard from '@/components/ArticleCard'
-import {restConfig, siteDomain} from '@/App'
+import {jsonApiConfig, siteDomain} from '@/App'
 import axios from 'axios'
 
 export default {
@@ -22,7 +22,7 @@ export default {
   },
   created () {
     axios
-      .get(siteDomain + '/jsonapi/node/article', restConfig)
+      .get(siteDomain + '/jsonapi/node/article', jsonApiConfig)
       .then(response => (this.articles = response.data))
   },
   components: {
