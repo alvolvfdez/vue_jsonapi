@@ -3,7 +3,7 @@
     <p v-if="loading">Loading...</p>
     <b-container v-else>
       <b-row>
-        <b-col cols="12"><h1>{{ $route.params.id }} - {{article.title}}</h1></b-col>
+        <b-col cols="12"><h1>{{ $route.params.uuid }} - {{article.title}}</h1></b-col>
       </b-row>
       <b-row>
         <b-col cols="12">
