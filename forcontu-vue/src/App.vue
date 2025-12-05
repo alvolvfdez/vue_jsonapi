@@ -12,7 +12,7 @@
 <script>
 export const jsonApiConfig = {
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/vnd.api+json',
     'X-CSRF-Token': 'Nzemkyhz2hJaKOHsg1JpZQTJDRWFTXFleQJWWbXA32s',
     'Accept': 'application/vnd.api+json',
     'Authorization': 'Basic ' + btoa('usuariodemo:usuariodemo')
