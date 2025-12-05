@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import {restConfig, siteDomain} from '@/App'
+import {jsonApiConfig, siteDomain} from '@/App'
 import axios from 'axios'
 
 export default {
