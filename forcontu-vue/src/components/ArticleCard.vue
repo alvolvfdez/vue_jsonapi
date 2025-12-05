@@ -10,9 +10,9 @@
       class="mb-2">
       <b-card-text v-html="article.text"></b-card-text>
       <b-card-text>
-        {{ article.body }}
+        {{ article.text }}
       </b-card-text>
-      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.id }}">Ver más</b-button>
+      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.uuid }}">Ver más</b-button>
     </b-card>
   </div>
 </template>
