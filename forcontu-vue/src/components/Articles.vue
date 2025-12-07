@@ -2,7 +2,7 @@
   <div class="articles">
     <b-card-group columns id="list">
       <article-card v-for="article in articles"
-                    v-bind:key="article.uuid"
+                    v-bind:key="article.id"
                     v-bind:article="article"
       ></article-card>
     </b-card-group>

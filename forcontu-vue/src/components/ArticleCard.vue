@@ -1,18 +1,18 @@
 <template>
   <div class="article-card">
     <b-card
-      v-bind:title="article.title"
-      v-bind:img-src="siteDomain + article.img"
-      v-bind:img-alt="article.title"
+      v-bind:title="article.attributes.title"
+      v-bind:img-src="siteDomain + article.attributes.img"
+      v-bind:img-alt="article.attributes.title"
       img-top
       tag="article"
       style="max-width: 20rem;"
       class="mb-2">
-      <b-card-text v-html="article.text"></b-card-text>
+      <b-card-text v-html="article.attributes.text"></b-card-text>
       <b-card-text>
-        {{ article.text }}
+        {{ article.attributes.text }}
       </b-card-text>
-      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.uuid }}">Ver más</b-button>
+      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.id }}">Ver más</b-button>
     </b-card>
   </div>
 </template>
