@@ -25,8 +25,23 @@ export default {
     axios
       .get(siteDomain + 'jsonapi/node/article?include=img', jsonApiConfig)
       .then(response => {
-        this.articles = response.data.data
-        this.included = response.data.included
+        const data = response.data.data
+        const included = response.data.included || []
+
+        // Recorremos cada artículo para asignarle su imagen
+        this.articles = data.map(article => {
+          // Si el artículo tiene relación con imagen
+          if (article.relationships && article.relationships.img && article.relationships.img.data) {
+            const imgId = article.relationships.img.data.id
+            // Buscamos la imagen en el array included
+            const img = included.find(i => i.id === imgId)
+            if (img) {
+              // Inyectamos la URL directamente en el objeto article para usarlo fácil en el hijo
+              article.imgUrl = img.attributes.uri.url
+            }
+          }
+          return article
+        })
       })
   },
   components: {
