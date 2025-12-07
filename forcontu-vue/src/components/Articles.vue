@@ -22,7 +22,7 @@ export default {
   },
   created () {
     axios
-      .get(siteDomain + 'jsonapi/node/article', jsonApiConfig)
+      .get(siteDomain + 'jsonapi/node/article?include=field_image', jsonApiConfig)
       .then(response => (this.articles = response.data.data))
   },
   components: {
