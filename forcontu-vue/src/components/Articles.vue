@@ -17,13 +17,17 @@ export default {
   name: 'Articles',
   data () {
     return {
-      articles: []
+      articles: [],
+      included: []
     }
   },
   created () {
     axios
       .get(siteDomain + 'jsonapi/node/article?include=field_image', jsonApiConfig)
-      .then(response => (this.articles = response.data.data))
+      .then(response => {
+        this.articles = response.data.data
+        this.included = response.data.included
+      })
   },
   components: {
     ArticleCard
