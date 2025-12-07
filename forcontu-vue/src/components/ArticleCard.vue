@@ -2,7 +2,6 @@
   <div class="article-card">
     <b-card
       v-bind:title="article.attributes.title"
-      img-top
       tag="article"
       style="max-width: 20rem;"
       class="mb-2">
