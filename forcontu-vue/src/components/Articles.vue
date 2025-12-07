@@ -23,7 +23,7 @@ export default {
   created () {
     axios
       .get(siteDomain + 'jsonapi/node/article', jsonApiConfig)
-      .then(response => (this.articles = response.data))
+      .then(response => (this.articles = response.data.data))
   },
   components: {
     ArticleCard

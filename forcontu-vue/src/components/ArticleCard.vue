@@ -1,15 +1,15 @@
 <template>
   <div class="article-card">
     <b-card
-      v-bind:title="article.title"
+      v-bind:title="article.attributes.title"
       tag="article"
       style="max-width: 20rem;"
       class="mb-2">
-      <b-card-text v-html="article.text"></b-card-text>
+      <b-card-text v-html="article.attributes.text.processed"></b-card-text>
       <b-card-text>
-        {{ article.text }}
+        {{ article.attributes.text.summary }}
       </b-card-text>
-      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.uuid }}">Ver más</b-button>
+      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.id }}">Ver más</b-button>
     </b-card>
   </div>
 </template>
