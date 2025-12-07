@@ -9,7 +9,7 @@
       <b-card-text>
         {{ article.text }}
       </b-card-text>
-      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.id }}">Ver más</b-button>
+      <b-button variant="primary" :to="{ name: 'ArticleDetail', params: { id: article.uuid }}">Ver más</b-button>
     </b-card>
   </div>
 </template>
