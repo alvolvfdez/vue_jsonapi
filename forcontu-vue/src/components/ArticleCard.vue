@@ -2,7 +2,7 @@
   <div class="article-card">
     <b-card
       v-bind:title="article.attributes.title"
-      v-bind:img-src="siteDomain + article.imgUrl"
+      v-bind:img-src="article.imgUrl ? siteDomain + article.imgUrl : ''"
       v-bind:img-alt="article.attributes.title"
       img-top
       tag="article"

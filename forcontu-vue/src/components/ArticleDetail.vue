@@ -11,7 +11,7 @@
           <div class="image float-left" v-if="article.imgUrl">
             <img v-bind:src="siteDomain + article.imgUrl" v-bind:alt="article.attributes.title" />
           </div>
-          <div v-html="article.attributes.body.value"></div>
+          <div v-html="article.attributes.text.value"></div>
         </b-col>
       </b-row>
       <b-row>
