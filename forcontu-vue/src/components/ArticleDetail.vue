@@ -3,23 +3,25 @@
     <p v-if="loading">Loading...</p>
     <b-container v-else>
       <b-row>
-        <b-col cols="12"><h1>{{ $route.params.uuid }} - {{article.title}}</h1></b-col>
+        <b-col cols="12"><h1>{{ article.attributes.title }}</h1></b-col>
       </b-row>
       <b-row>
         <b-col cols="12">
-          <div class="image float-left"><img v-bind:src="siteDomain + article.img" v-bind:alt="article.title" /></div>
-          <div v-html="article.text"></div>
+          <!-- Usamos article.imgUrl directamente, que preparamos en el created -->
+          <div class="image float-left" v-if="article.imgUrl">
+            <img v-bind:src="siteDomain + article.imgUrl" v-bind:alt="article.attributes.title" />
+          </div>
+          <div v-html="article.attributes.body.value"></div>
         </b-col>
       </b-row>
       <b-row>
         <b-col cols="12">
           <p>
-            Enviado por {{ article.user }}
-            el {{ formatDate(article.created) }}
+            Enviado el {{ formatDate(article.attributes.created) }}
           </p>
 
-          <p v-if="article.changed !== article.created">
-            Última modificación: {{ formatDate(article.changed) }}
+          <p v-if="article.attributes.changed !== article.attributes.created">
+            Última modificación: {{ formatDate(article.attributes.changed) }}
           </p>
         </b-col>
       </b-row>
@@ -34,7 +36,7 @@ export default {
   name: 'article-detail',
   data () {
     return {
-      article: [],
+      article: null, // Inicializamos como null
       siteDomain: siteDomain,
       loading: false
     }
@@ -42,9 +44,25 @@ export default {
   created () {
     this.loading = true
     axios
-      .get(siteDomain + '/jsonapi/node/article/' + this.$route.params.id, jsonApiConfig)
+      .get(siteDomain + 'jsonapi/node/article/' + this.$route.params.id + '?include=img', jsonApiConfig)
       .then(response => {
-        this.article = response.data.data
+        const data = response.data.data
+        const included = response.data.included || []
+
+        // Procesamos la imagen igual que hicimos en Articles.vue
+        if (data.relationships && data.relationships.img && data.relationships.img.data) {
+          const imgId = data.relationships.img.data.id
+          const img = included.find(i => i.id === imgId)
+          if (img) {
+            data.imgUrl = img.attributes.uri.url
+          }
+        }
+
+        this.article = data
+        this.loading = false
+      })
+      .catch(error => {
+        console.error(error)
         this.loading = false
       })
   },
